@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axiosInstance from '../utils/axiosInstance'; // Import axiosInstance from utils
-import { keyframes } from '@emotion/react'; // Import keyframes from @emotion/react
+import axiosInstance from '../utils/axiosInstance'; 
+import { keyframes } from '@emotion/react'; 
 import styled from '@emotion/styled';
 import {
     Container,
@@ -10,6 +10,12 @@ import {
     CardContent,
     CardHeader,
     Tooltip,
+    Button,
+    Select,
+    MenuItem,
+    FormControl,
+    InputLabel,
+    CircularProgress,
 } from '@mui/material';
 import {
     AccountCircle as AccountCircleIcon,
@@ -26,6 +32,10 @@ import {
     ThumbUp as ThumbUpIcon,
     TrendingUp as TrendingUpIcon,
 } from '@mui/icons-material';
+import { Line } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, LineElement, PointElement, Title } from 'chart.js';
+
+ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement, Title);
 
 // Keyframes for animation
 const fadeIn = keyframes`
@@ -62,14 +72,17 @@ const Dashboard = () => {
     const [analytics, setAnalytics] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [selectedUserId, setSelectedUserId] = useState(1); // Default user ID
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const userResponse = await axiosInstance.get('/api/users/1');
+                // Fetch user information
+                const userResponse = await axiosInstance.get(`/api/users/${selectedUserId}`);
                 setUser(userResponse.data);
 
-                const analyticsResponse = await axiosInstance.get('/api/analytics/1');
+                // Fetch analytics data
+                const analyticsResponse = await axiosInstance.get(`/api/analytics/${selectedUserId}`);
                 setAnalytics(analyticsResponse.data);
 
                 setLoading(false);
@@ -81,10 +94,10 @@ const Dashboard = () => {
         };
 
         fetchData();
-    }, []);
+    }, [selectedUserId]);
 
     if (loading) {
-        return <Typography>Loading...</Typography>;
+        return <CircularProgress />;
     }
 
     if (error) {
@@ -95,11 +108,37 @@ const Dashboard = () => {
         return <Typography>No data available</Typography>;
     }
 
+    const chartData = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [
+            {
+                label: 'Followers Over Time',
+                data: [100, 200, 150, 300, 250, 400, 350], // Example data
+                fill: false,
+                backgroundColor: '#1E88E5',
+                borderColor: '#1E88E5',
+            },
+        ],
+    };
+
     return (
         <DashboardContainer maxWidth="lg">
             <Typography variant="h4" gutterBottom>
                 {user.name}'s Dashboard
             </Typography>
+            
+            <FormControl fullWidth margin="normal">
+                <InputLabel id="user-select-label">Select User</InputLabel>
+                <Select
+                    labelId="user-select-label"
+                    value={selectedUserId}
+                    onChange={(e) => setSelectedUserId(e.target.value)}
+                >
+                    <MenuItem value={1}>User 1</MenuItem>
+                    <MenuItem value={2}>User 2</MenuItem>
+                    {/* Add more users here */}
+                </Select>
+            </FormControl>
 
             <Grid container spacing={3}>
                 <Grid item xs={12} md={4}>
@@ -238,6 +277,20 @@ const Dashboard = () => {
                                     </AnimatedCard>
                                 </Grid>
                             </Grid>
+                        </CardContent>
+                    </AnimatedCard>
+                </Grid>
+
+                {/* Example Graph */}
+                <Grid item xs={12}>
+                    <AnimatedCard>
+                        <CardHeader
+                            title="Follower Growth"
+                            subheader="Growth of followers over the past months"
+                            avatar={<BarChartIcon />}
+                        />
+                        <CardContent>
+                            <Line data={chartData} />
                         </CardContent>
                     </AnimatedCard>
                 </Grid>
