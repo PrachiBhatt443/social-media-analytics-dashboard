@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { css, keyframes } from '@emotion/react';
+import axiosInstance from '../utils/axiosInstance'; // Import axiosInstance from utils
+import { keyframes } from '@emotion/react'; // Import keyframes from @emotion/react
 import styled from '@emotion/styled';
 import {
     Container,
@@ -66,14 +66,15 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const userResponse = await axios.get('https://writomat-backend.onrender.com/api/users/1');
+                const userResponse = await axiosInstance.get('/api/users/1');
                 setUser(userResponse.data);
 
-                const analyticsResponse = await axios.get('https://writomat-backend.onrender.com/api/analytics/1');
+                const analyticsResponse = await axiosInstance.get('/api/analytics/1');
                 setAnalytics(analyticsResponse.data);
 
                 setLoading(false);
             } catch (error) {
+                console.error('Error fetching data:', error);
                 setError(error);
                 setLoading(false);
             }
@@ -214,12 +215,12 @@ const Dashboard = () => {
                                     <AnimatedCard>
                                         <CardContent>
                                             <Typography variant="h6">
-                                                <Tooltip title="Active Promotions">
-                                                    <CampaignIcon sx={{ mr: 1, color: 'success.main' }} />
+                                                <Tooltip title="New Comments">
+                                                    <CommentIcon sx={{ mr: 1, color: 'error.main' }} />
                                                 </Tooltip>
-                                                Active Promotions
+                                                New Comments
                                             </Typography>
-                                            <Typography variant="h5">{analytics.activePromotions}</Typography>
+                                            <Typography variant="h5">{analytics.newComments}</Typography>
                                         </CardContent>
                                     </AnimatedCard>
                                 </Grid>
@@ -227,55 +228,15 @@ const Dashboard = () => {
                                     <AnimatedCard>
                                         <CardContent>
                                             <Typography variant="h6">
-                                                <Tooltip title="Total Follows">
-                                                    <PeopleIcon sx={{ mr: 1, color: 'info.main' }} />
+                                                <Tooltip title="Saved Posts">
+                                                    <SaveIcon sx={{ mr: 1, color: 'text.primary' }} />
                                                 </Tooltip>
-                                                Total Follows
+                                                Saved Posts
                                             </Typography>
-                                            <Typography variant="h5">{analytics.totalFollows}</Typography>
+                                            <Typography variant="h5">{analytics.savedPosts}</Typography>
                                         </CardContent>
                                     </AnimatedCard>
                                 </Grid>
-                                <Grid item xs={12} sm={6} md={4}>
-                                    <AnimatedCard>
-                                        <CardContent>
-                                            <Typography variant="h6">
-                                                <Tooltip title="Total Posts">
-                                                    <PostAddIcon sx={{ mr: 1, color: 'info.main' }} />
-                                                </Tooltip>
-                                                Total Posts
-                                            </Typography>
-                                            <Typography variant="h5">{analytics.totalPosts}</Typography>
-                                        </CardContent>
-                                    </AnimatedCard>
-                                </Grid>
-                                <Grid item xs={12} sm={6} md={4}>
-                                    <AnimatedCard>
-                                        <CardContent>
-                                            <Typography variant="h6">
-                                                <Tooltip title="Total Saves">
-                                                    <SaveIcon sx={{ mr: 1, color: 'info.main' }} />
-                                                </Tooltip>
-                                                Total Saves
-                                            </Typography>
-                                            <Typography variant="h5">{analytics.totalSaves}</Typography>
-                                        </CardContent>
-                                    </AnimatedCard>
-                                </Grid>
-                                <Grid item xs={12} sm={6} md={4}>
-                                    <AnimatedCard>
-                                        <CardContent>
-                                            <Typography variant="h6">
-                                                <Tooltip title="Total Comments">
-                                                    <CommentIcon sx={{ mr: 1, color: 'info.main' }} />
-                                                </Tooltip>
-                                                Total Comments
-                                            </Typography>
-                                            <Typography variant="h5">{analytics.totalComments}</Typography>
-                                        </CardContent>
-                                    </AnimatedCard>
-                                </Grid>
-                                {/* Add more metrics as needed */}
                             </Grid>
                         </CardContent>
                     </AnimatedCard>
