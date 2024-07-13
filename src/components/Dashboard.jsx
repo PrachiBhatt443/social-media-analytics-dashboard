@@ -66,10 +66,10 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const userResponse = await axios.get('http://localhost:8080/api/users/1');
+                const userResponse = await axios.get('https://writomat-backend.onrender.com/api/users/1');
                 setUser(userResponse.data);
 
-                const analyticsResponse = await axios.get('http://localhost:8080/api/analytics/1');
+                const analyticsResponse = await axios.get('https://writomat-backend.onrender.com/api/analytics/1');
                 setAnalytics(analyticsResponse.data);
 
                 setLoading(false);
