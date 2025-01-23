@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# 📊 Social Media Analytics Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the **Social Media Analytics Dashboard**, a comprehensive tool designed for influencers to track and analyze their reach, engagement, and other vital metrics across multiple platforms like Facebook, Instagram, and YouTube. 
 
-## Available Scripts
+## 🚀 Tech Stack
 
-In the project directory, you can run:
+This project is built using a modern tech stack to ensure a seamless user experience:
 
-### `npm start`
+- **Frontend:** React, Material-UI, Chart.js, Axios
+- **Backend:** Spring Boot, H2 Database
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🌟 Key Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 1. **Cross-Platform Analytics**
+   - Aggregates data from various social media platforms, providing a unified view of key metrics such as followers, engagement rates, and post-performance. Supports over 5 social media platforms!
 
-### `npm test`
+### 2. **Interactive Charts**
+   - Utilizes Chart.js to create interactive and visually appealing charts, allowing users to easily interpret their social media data and make informed decisions.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📦 Getting Started
 
-### `npm run build`
+To get a local copy of the project up and running, follow these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Make sure you have [Node.js](https://nodejs.org/) and [Java](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) installed on your machine.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Installation
 
-### `npm run eject`
+1. **Clone the frontend repository:**
+   ```bash
+   git clone https://github.com/PrachiBhatt443/social-media-analytics-dashboard.git
+   ```
+2. **Navigate to the frontend directory:**
+   ```bash
+   cd social-media-analytics-dashboard/frontend
+   ```
+3. **Install the frontend dependencies:**
+   ```bash
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. **Clone the backend repository:**
+   ```bash
+   git clone https://github.com/PrachiBhatt443/writomat-backend.git
+   ```
+5. **Navigate to the backend directory:**
+   ```bash
+   cd writomat-backend
+   ```
+6. **Run the Spring Boot application.** (Make sure to configure your application properties as needed.)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Running the App
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+To start the frontend application, navigate back to the frontend directory and run:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### `npm start`
 
-## Learn More
+This will start the app in development mode. Open [http://localhost:3000](http://localhost:3000) in your browser to view it.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🌐 Learn More
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Want to dive deeper? Check out the following resources:
 
-### Code Splitting
+- [React Documentation](https://reactjs.org/docs/getting-started.html)
+- [Material-UI Documentation](https://mui.com/getting-started/installation/)
+- [Chart.js Documentation](https://www.chartjs.org/docs/latest/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<meta name="description" content="A comprehensive social media analytics dashboard for influencers to track and analyze reach, engagement, and other metrics across multiple platforms.">
+<meta name="keywords" content="Social Media, Analytics, Dashboard, Influencers, Facebook, Instagram, YouTube, React, Chart.js">
+<meta name="author" content="Prachi Bhatt">
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🤝 Contributing
 
-### Making a Progressive Web App
+We welcome contributions! If you have suggestions or improvements, feel free to fork the repository and submit a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for checking out the Social Media Analytics Dashboard! We hope you find it useful in your social media journey. Happy analyzing! 🎉
